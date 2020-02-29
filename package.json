@@ -6,5 +6,7 @@
   "repository": "https://github.com/diazevedo/fast-feet",
   "author": "Diego Azevedo <dapptn@hotmail.com>",
   "license": "MIT",
-  "type": "module"
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
 }
