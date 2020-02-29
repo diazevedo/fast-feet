@@ -1,0 +1,9 @@
+{
+  "name": "fast-feet",
+  "version": "1.0.0",
+  "description": "Api for an shpping company",
+  "main": "index.js",
+  "repository": "https://github.com/diazevedo/fast-feet",
+  "author": "Diego Azevedo <dapptn@hotmail.com>",
+  "license": "MIT"
+}
