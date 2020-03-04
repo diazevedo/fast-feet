@@ -1,7 +1,13 @@
 import { Router } from 'express';
+import checkToken from './app/middlewares/jwt';
+
+import validateSessionStore from './app/validators/SessionStore';
+import SessionController from './app/controllers/SessionController';
 
 const routes = new Router();
 
-routes.get('/', (req, res) => res.json({ message: 'Working...' }));
+routes.post('/sessions', validateSessionStore, SessionController.store);
+
+routes.get('/', (req, res) => res.json({ status: 'Working' }));
 
 export default routes;
