@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import checkToken from './app/middlewares/jwt';
 
 import validateSessionStore from './app/validators/SessionStore';
 import SessionController from './app/controllers/SessionController';
