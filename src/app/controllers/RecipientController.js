@@ -12,6 +12,10 @@ class RecipientController {
 
     const recipient = await Recipient.findByPk(id);
 
+    if (!recipient) {
+      res.status(404).json({ message: 'Recipient not found.' });
+    }
+
     await recipient.update(req.body);
 
     res.status(201).json({ recipient });
