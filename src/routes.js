@@ -7,7 +7,7 @@ import validateSessionStore from '~validators/SessionStore';
 
 import RecipientController from '~controllers/RecipientController';
 import validateRecipientStore from '~validators/RecipientStore';
-import validateRecientUpdate from '~validators/RecipientUpdate';
+import validateRecipentUpdate from '~validators/RecipientUpdate';
 
 const routes = new Router();
 
@@ -20,7 +20,8 @@ routes.use(checkAuth);
 routes.post('/recipients', validateRecipientStore, RecipientController.store);
 routes.put(
   '/recipients/:id',
-  validateRecientUpdate,
+  validateRecipentUpdate,
+  validateRecipientStore,
   RecipientController.update
 );
 

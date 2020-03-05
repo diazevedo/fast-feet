@@ -8,8 +8,13 @@ class RecipientController {
   }
 
   async update(req, res) {
-    console.log(req.params.id);
-    res.status(201).json({ message: 'ok' });
+    const { id } = req.params;
+
+    const recipient = await Recipient.findByPk(id);
+
+    await recipient.update(req.body);
+
+    res.status(201).json({ recipient });
   }
 }
 
