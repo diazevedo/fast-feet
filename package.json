@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "dev:debug": "nodemon --inspect src/server.js"
+    "dev:debug": "nodemon --inspect src/server.js",
+    "postinstall": "link-module-alias"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
@@ -27,9 +28,20 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "link-module-alias": "^1.2.0",
     "pg": "^7.18.2",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.5",
     "yup": "^0.28.1"
+  },
+  "_moduleAliases": {
+    "~root": ".",
+    "~": "src",
+    "~controllers": "src/app/controllers",
+    "~middlewares": "src/app/middlewares",
+    "~validators": "src/app/validators",
+    "~models": "src/app/models",
+    "~config": "src/config",
+    "~database": "src/database"
   }
 }
