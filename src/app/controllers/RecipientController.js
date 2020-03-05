@@ -6,6 +6,11 @@ class RecipientController {
 
     res.status(201).json({ recipient });
   }
+
+  async update(req, res) {
+    console.log(req.params.id);
+    res.status(201).json({ message: 'ok' });
+  }
 }
 
 export default new RecipientController();

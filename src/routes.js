@@ -7,14 +7,21 @@ import validateSessionStore from '~validators/SessionStore';
 
 import RecipientController from '~controllers/RecipientController';
 import validateRecipientStore from '~validators/RecipientStore';
+import validateRecientUpdate from '~validators/RecipientUpdate';
 
 const routes = new Router();
 
 routes.get('/', (req, res) => res.json({ status: 'Working' }));
+
 routes.post('/sessions', validateSessionStore, SessionController.store);
 
 /* Routes that need authentication */
 routes.use(checkAuth);
 routes.post('/recipients', validateRecipientStore, RecipientController.store);
+routes.put(
+  '/recipients/:id',
+  validateRecientUpdate,
+  RecipientController.update
+);
 
 export default routes;
