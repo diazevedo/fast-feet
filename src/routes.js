@@ -9,6 +9,9 @@ import RecipientController from '~controllers/RecipientController';
 import validateRecipientStore from '~validators/RecipientStore';
 import validateRecipentUpdate from '~validators/RecipientUpdate';
 
+import CourierController from '~controllers/CourierController';
+import validateCourierStore from '~validators/CourierStore';
+
 const routes = new Router();
 
 routes.get('/', (req, res) => res.json({ status: 'Working' }));
@@ -24,5 +27,7 @@ routes.put(
   validateRecipientStore,
   RecipientController.update
 );
+
+routes.post('/couriers', validateCourierStore, CourierController.store);
 
 export default routes;
