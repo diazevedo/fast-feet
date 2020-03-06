@@ -36,7 +36,9 @@ class CourierController {
         res.status(400).json({ error: errors[0].message })
       );
 
-    res.status(200).json({ courier });
+    res
+      .status(200)
+      .json({ id: courier.id, name: courier.name, email: courier.email });
   }
 
   async delete(req, res) {

@@ -11,6 +11,7 @@ import validateRecipentUpdate from '~validators/RecipientUpdate';
 
 import CourierController from '~controllers/CourierController';
 import validateCourierStore from '~validators/CourierStore';
+import validateCourierId from '~validators/CourierId';
 
 const routes = new Router();
 
@@ -30,7 +31,7 @@ routes.put(
 
 routes.get('/couriers', CourierController.index);
 routes.post('/couriers', validateCourierStore, CourierController.store);
-routes.put('/couriers/:id', CourierController.update);
-routes.delete('/couriers/:id', CourierController.delete);
+routes.put('/couriers/:id', validateCourierId, CourierController.update);
+routes.delete('/couriers/:id', validateCourierId, CourierController.delete);
 
 export default routes;
