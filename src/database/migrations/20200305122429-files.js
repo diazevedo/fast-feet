@@ -31,3 +31,36 @@ module.exports = {
     return queryInterface.dropTable('files');
   },
 };
+
+[
+  {
+    jsonrpc: '2.0',
+    result: {
+      appName: 'DiBetfair',
+      appId: 87767,
+      appVersions: [
+        {
+          owner: 'diazevedo',
+          versionId: 79929,
+          version: '1.0-DELAY',
+          applicationKey: 'xsBfHRJofSUU3yfR',
+          delayData: true,
+          subscriptionRequired: true,
+          ownerManaged: false,
+          active: true,
+        },
+        {
+          owner: 'diazevedo',
+          versionId: 79928,
+          version: '1.0',
+          applicationKey: 'gxa2IogtFUAFzBzp',
+          delayData: false,
+          subscriptionRequired: true,
+          ownerManaged: false,
+          active: false,
+        },
+      ],
+    },
+    id: 1,
+  },
+];
