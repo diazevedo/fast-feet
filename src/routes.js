@@ -15,7 +15,7 @@ import * as CourierValidator from '~validators/courier';
 import FileController from '~controllers/FileController';
 
 import ParcelController from '~controllers/ParcelController';
-import validatorParcelStore from '~validators/parcel/store';
+import * as ParcelValidator from '~validators/parcel/';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -49,6 +49,8 @@ routes.post('/files', upload.single('file'), FileController.store);
 
 /** Parcels */
 routes.get('/parcels', ParcelController.index);
-routes.post('/parcels', validatorParcelStore, ParcelController.store);
+routes.post('/parcels', ParcelValidator.store, ParcelController.store);
+routes.put('/parcels/:id', ParcelValidator.update, ParcelController.update);
+routes.delete('/parcels/:id', ParcelValidator.del, ParcelController.delete);
 
 export default routes;
