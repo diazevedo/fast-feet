@@ -67,7 +67,12 @@ class ParcelController {
     await Mail.sendMail({
       to: `${courier.name} <${courier.email}>?`,
       subject: 'New delivery assigned',
-      text: `New delivery was assigned for you and it is ready for pick-up.`,
+      template: 'assignment',
+      context: {
+        courier: courier.name,
+        recipient: recipient.name,
+        product,
+      },
     });
 
     return res.status(200).json({
