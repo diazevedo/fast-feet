@@ -4,8 +4,8 @@ import Courier from '~models/Courier';
 import File from '~models/File';
 
 import Notification from '~schemas/Notification';
-
-import Mail from '~lib/Mail';
+import AssignmentMail from '~jobs/AssignmentMail';
+import Queue from '~lib/Queue';
 
 class ParcelController {
   async index(req, res) {
@@ -64,16 +64,7 @@ class ParcelController {
       user: courier.id,
     });
 
-    await Mail.sendMail({
-      to: `${courier.name} <${courier.email}>?`,
-      subject: 'New delivery assigned',
-      template: 'assignment',
-      context: {
-        courier: courier.name,
-        recipient: recipient.name,
-        product,
-      },
-    });
+    Queue.add(AssignmentMail.key, { courier, recipient, product });
 
     return res.status(200).json({
       parcel: {
