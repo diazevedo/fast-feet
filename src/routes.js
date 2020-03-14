@@ -45,6 +45,24 @@ routes.delete(
   CourierController.delete
 );
 
+/** Couriers routes to manage deliveries */
+routes.get('/couriers/:courier_id/parcels', (req, res) => {
+  res.json({ ok: 'ok' });
+});
+
+// routes.put('/couriers/:courier_id/:parcel_id/start', CourierParcelManagement(req, res) => {
+//   res.json({ ok: 'ok' });
+// });
+
+// routes.put('/couriers/:courier_id/:parcel_id/end', CourierParcelManagement(req, res) => {
+//   res.json({ ok: 'ok' });
+// });
+
+// routes.put('/couriers/:courier_id/:parcel_id', (req, res) => {
+//   res.json({ ok: 'ok' });
+// });
+
+/** File upload */
 routes.post('/files', upload.single('file'), FileController.store);
 
 /** Parcels */

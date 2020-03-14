@@ -84,12 +84,14 @@ class ParcelController {
   }
 
   async delete(req, res) {
-    const parcel = await Parcel.destroy({ where: { id: req.params.id } });
+    const parcel = await Parcel.findByPk(req.params.id);
 
-    const status = parcel > 0 ? 200 : 404;
-    const message = parcel > 0 ? 'Parcel removed.' : 'Parcel not found.';
+    if (!parcel) {
+      return res.status(400).json({ error: 'Order not found.' });
+    }
 
-    return res.status(status).json({ message });
+    parcel.update({ canceled_at: new Date() });
+    return res.status(200).json({ message: 'Order canceled' });
   }
 }
 
