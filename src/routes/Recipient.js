@@ -8,6 +8,7 @@ import checkAuth from '~middlewares/jwt';
 const routes = Router();
 routes.use(checkAuth);
 
+routes.get('/recipients', RecipientController.index);
 routes.post('/recipients', RecipientValidator.store, RecipientController.store);
 routes.put(
   '/recipients/:id',

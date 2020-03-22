@@ -1,9 +1,18 @@
+import { Op } from 'sequelize';
+
 import Courier from '~models/Courier';
 import File from '~models/File';
 
 class CourierController {
   async index(req, res) {
+    const where = {};
+
+    if (req.query.name) {
+      where.name = { [Op.iLike]: `%${req.query.name}%` };
+    }
+
     const couriers = await Courier.findAll({
+      where,
       attributes: ['id', 'name', 'email', 'avatar_id'],
       include: [
         {

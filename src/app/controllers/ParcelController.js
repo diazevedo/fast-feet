@@ -1,3 +1,5 @@
+import { Op } from 'sequelize';
+
 import Parcel from '~models/Parcel';
 import Recipient from '~models/Recipient';
 import Courier from '~models/Courier';
@@ -9,7 +11,14 @@ import Queue from '~lib/Queue';
 
 class ParcelController {
   async index(req, res) {
+    const where = {};
+
+    if (req.query.name) {
+      where.product = { [Op.like]: `%${req.query.name}%` };
+    }
+
     const parcels = await Parcel.findAll({
+      where,
       attributes: ['id', 'product', 'canceled_at', 'start_date', 'end_date'],
       include: [
         {
