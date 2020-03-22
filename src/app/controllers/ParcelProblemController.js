@@ -4,6 +4,10 @@ import Courier from '~models/Courier';
 import Recipient from '~models/Recipient';
 import File from '~models/File';
 
+import Notification from '~schemas/Notification';
+import ParcelCancellationMail from '~jobs/ParcelCancellationMail';
+import Queue from '~lib/Queue';
+
 class ParcelProblemController {
   async show(req, res) {
     const { parcel_id } = req.params;
@@ -66,7 +70,40 @@ class ParcelProblemController {
     });
 
     return res.json(parcelProblem);
-    // return res.json(parcelProblem);
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+    const { parcel_id } = await ParcelProblem.findByPk(id, {
+      attributes: ['parcel_id'],
+    });
+
+    const parcel = await Parcel.findByPk(parcel_id, {
+      include: [
+        {
+          model: Courier,
+          as: 'courier',
+          attributes: ['id', 'name', 'email'],
+        },
+        {
+          model: Recipient,
+          as: 'recipient',
+          attributes: ['id', 'name'],
+        },
+      ],
+    });
+
+    const { courier, recipient, product } = parcel;
+    await Notification.create({
+      content: `Delivery has been canceled. Recipient: ${recipient.name} Product: ${product}`,
+      user: courier.id,
+    });
+
+    Queue.add(ParcelCancellationMail.key, { courier, recipient, product });
+
+    parcel.update({ canceled_at: new Date() });
+
+    return res.status(200).json({ courier, recipient, product });
   }
 }
 
