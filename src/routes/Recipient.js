@@ -7,7 +7,7 @@ import checkAuth from '~middlewares/jwt';
 
 const routes = Router();
 routes.use(checkAuth);
-
+routes.delete('/recipients/:id', RecipientController.delete);
 routes.get('/recipients', RecipientController.index);
 routes.post('/recipients', RecipientValidator.store, RecipientController.store);
 routes.put(
@@ -16,4 +16,5 @@ routes.put(
   RecipientValidator.store,
   RecipientController.update
 );
+
 export default routes;

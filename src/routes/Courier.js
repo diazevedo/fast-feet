@@ -16,7 +16,7 @@ routes.put(
   CourierController.update
 );
 routes.delete(
-  'admin/couriers/:id',
+  '/admin/couriers/:id',
   CourierValidator.update,
   CourierController.delete
 );

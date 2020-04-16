@@ -18,6 +18,8 @@ class RecipientController {
   async store(req, res) {
     const recipient = await Recipient.create(req.body);
 
+    if (!recipient) res.status(400);
+
     res.status(201).json({ recipient });
   }
 
@@ -33,6 +35,16 @@ class RecipientController {
     await recipient.update(req.body);
 
     res.status(201).json({ recipient });
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+    console.log();
+    const recipient = await Recipient.findByPk(id);
+    if (!recipient) res.status(400).json({ message: 'Recipient not found.' });
+
+    await recipient.destroy();
+    res.status(204).json({ message: 'Deleted' });
   }
 }
 

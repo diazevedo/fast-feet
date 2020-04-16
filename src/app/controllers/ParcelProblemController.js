@@ -10,8 +10,8 @@ import Queue from '~lib/Queue';
 
 class ParcelProblemController {
   async show(req, res) {
-    const { parcel_id } = req.params;
-    const parcelProblem = await ParcelProblem.findOne({ where: { parcel_id } });
+    const { id } = req.params;
+    const parcelProblem = await ParcelProblem.findByPk(id);
 
     return res.json(parcelProblem);
   }
@@ -20,7 +20,7 @@ class ParcelProblemController {
     // set constants limit
     const { page = 1 } = req.query;
     const parcelProblems = await ParcelProblem.findAll({
-      attributes: ['description', 'created_at'],
+      attributes: ['id', 'description', 'created_at'],
       order: ['created_at'],
       limit: 10,
       offset: (page - 1) * 10,
@@ -28,7 +28,7 @@ class ParcelProblemController {
         {
           model: Parcel,
           as: 'parcel',
-          attributes: ['product'],
+          attributes: ['id', 'product'],
           include: [
             {
               model: Courier,
