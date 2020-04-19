@@ -11,9 +11,11 @@ import Queue from '~lib/Queue';
 class ParcelProblemController {
   async show(req, res) {
     const { id } = req.params;
-    const parcelProblem = await ParcelProblem.findByPk(id);
+    const parcelProblems = await ParcelProblem.findAll({
+      where: { parcel_id: id },
+    });
 
-    return res.json(parcelProblem);
+    return res.json(parcelProblems);
   }
 
   async index(req, res) {
@@ -56,16 +58,15 @@ class ParcelProblemController {
   }
 
   async store(req, res) {
-    const { parcel_id } = req.params;
+    const { id } = req.params;
     const { description } = req.body;
-
-    const parcelToUpdate = await Parcel.findByPk(parcel_id);
+    const parcelToUpdate = await Parcel.findByPk(id);
     if (!parcelToUpdate) {
       return res.status(400).json({ message: 'This parcel was not found.' });
     }
 
     const parcelProblem = await ParcelProblem.create({
-      parcel_id,
+      parcel_id: id,
       description,
     });
 

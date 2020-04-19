@@ -93,8 +93,6 @@ class ParcelController {
   async store(req, res) {
     const { recipient_id, courier_id, product } = req.body;
 
-    console.log(req.body);
-
     const courier = await Courier.findByPk(req.body.courier_id);
     if (!courier) {
       return res.status(400).json({
