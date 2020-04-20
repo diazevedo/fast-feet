@@ -147,7 +147,7 @@ class ParcelController {
       return res.status(400).json({ error: 'Order not found.' });
     }
 
-    parcel.update({ canceled_at: new Date() });
+    await parcel.update({ canceled_at: new Date() });
     return res.status(200).json({ message: 'Order canceled' });
   }
 }
