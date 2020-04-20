@@ -10,8 +10,6 @@ export default async (req, res, next) => {
 
     return next();
   } catch (error) {
-    return res
-      .status(400)
-      .json({ error: 'Sorry, validation has failed.', messages: error.inner });
+    return res.status(400).json({ error: 'Sorry, validation has failed.' });
   }
 };

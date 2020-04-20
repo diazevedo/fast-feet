@@ -18,7 +18,6 @@ class DeliveriesController {
       },
     });
 
-    // set constants to maximum deliveries.
     if (deliveriesTaken.count >= 5) {
       return res
         .status(400)

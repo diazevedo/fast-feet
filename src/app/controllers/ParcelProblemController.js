@@ -102,7 +102,7 @@ class ParcelProblemController {
 
     Queue.add(ParcelCancellationMail.key, { courier, recipient, product });
 
-    parcel.update({ canceled_at: new Date() });
+    await parcel.update({ canceled_at: new Date() });
 
     return res.status(200).json({ courier, recipient, product });
   }
