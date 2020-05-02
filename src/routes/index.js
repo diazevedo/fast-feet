@@ -7,6 +7,7 @@ import courierRoutes from './Courier';
 import parcelRoutes from './Parcel';
 import fileRoutes from './File';
 import parcelProblemsRoutes from './ParcelProblem';
+import problemsRoutes from './Problem';
 
 import courierDeliveries from './CourierManagementParcels';
 
@@ -18,6 +19,7 @@ routes.use(fileRoutes);
 routes.use(courierDeliveries);
 
 routes.use(parcelProblemsRoutes);
+routes.use(problemsRoutes);
 
 /* routes that require authentication */
 routes.use(recipientRoutes);

@@ -1,22 +1,24 @@
 import { Op } from 'sequelize';
-import { startOfDay, endOfDay, isBefore, isAfter, setHours } from 'date-fns';
+import { startOfDay, endOfDay, setHours, parseISO, getHours } from 'date-fns';
 
 import Parcel from '~models/Parcel';
 
 class DeliveriesController {
   async update(req, res) {
     const { parcel_id, courier_id } = req.params;
+    const { dateStarted } = req.body;
 
     const today = new Date();
     const todayStart = startOfDay(today);
     const todayEnd = endOfDay(today);
 
-    const initHour = setHours(new Date(), 8);
+    const deliveryStartTime = getHours(parseISO(dateStarted));
 
-    const finishHour = setHours(new Date(), 18);
+    const initHour = getHours(setHours(new Date(), 8));
+    const finishHour = getHours(setHours(new Date(), 17));
 
-    if (isBefore(today, initHour) || isAfter(today, finishHour)) {
-      return res.status(400).json({ error: 'Your shift has not started yet.' });
+    if (deliveryStartTime < initHour || deliveryStartTime > finishHour) {
+      return res.status(400).json({ message: 'It is not time to work.' });
     }
 
     const deliveriesTaken = await Parcel.findAndCountAll({

@@ -11,6 +11,7 @@ import Queue from '~lib/Queue';
 class ParcelProblemController {
   async show(req, res) {
     const { id } = req.params;
+
     const parcelProblems = await ParcelProblem.findAll({
       where: { parcel_id: id },
     });
@@ -20,6 +21,7 @@ class ParcelProblemController {
 
   async index(req, res) {
     // set constants limit
+
     const { page = 1 } = req.query;
     const parcelProblems = await ParcelProblem.findAll({
       attributes: ['id', 'description', 'created_at'],
