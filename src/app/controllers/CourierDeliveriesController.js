@@ -15,6 +15,7 @@ class CourierDeliveriesController {
 
     if (req.query.status === 'delivered') {
       where.end_date = { [Op.not]: null };
+      where.canceled_at = { [Op.is]: null };
     }
 
     const parcelsDelivered = await Parcel.findAll({
