@@ -14,7 +14,7 @@
 
 ### Description
 
-This is the backend code of a project developed as final challenge from `[Rockeseat Bootcamp](https://rocketseat.com.br/gostack)`.
+This is the backend code of a project developed as final challenge from [Rockeseat Bootcamp](https://rocketseat.com.br/gostack).
 
 FastFeet is an application designed to be used by a shipping company.
 
