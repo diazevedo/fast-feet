@@ -2,15 +2,15 @@
   <img alt="Fastfeet" title="Fastfeet" src=".github/logo-text.png" width="300px" />
 </h1>
 
-FastFeet Logo
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/diazevedo/fast-feet">
 
-<img alt="GitHub language count" src="[https://img.shields.io/github/languages/count/diazevedo/fast-feet](https://img.shields.io/github/languages/count/diazevedo/fast-feet)">
-
-<a href="https://rocketseat.com.br">
-    <img alt="Made by Rocketseat" src="https://img.shields.io/badge/made%20by-Rocketseat-%2304D361">
+  <a href="https://github.com/diazevedo">
+    <img alt="Made by Di Azevedo" src="https://img.shields.io/badge/made%20by-DiAzevedo-%2325b0e6">
   </a>
 
-<img alt="License" src="[https://img.shields.io/badge/license-MIT-%2304D361](https://img.shields.io/badge/license-MIT-%2304D361)">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
+</p>
 
 ### Description
 
@@ -31,8 +31,9 @@ The api is consumed by frontend and the mobile versions.
 - Deliveries management
 - Deliveries Problems
 - Files management
+- Email alerts
 
-### Technologies / Libraries
+Technologies / Libraries
 
 - [Sucrase](https://github.com/alangpierce/sucrase)
 - [Nodemon](https://nodemon.io/)
@@ -46,4 +47,58 @@ The api is consumed by frontend and the mobile versions.
 - [bee-queue](https://github.com/bee-queue/bee-queue)
 - [multer](https://github.com/expressjs/multer)
 
-Feel free to comment or to contribute with this project any thoughts on how to improve this is welcome.
+### Running the project
+
+Requeriments
+
+- [Node](https://nodejs.org/en/)
+- [Yarn](https://yarnpkg.com/) or [NPM](https://www.npmjs.com/) — I am using yarn commands over this step-by-step
+
+```bash
+# Clone the repository
+$ git clone git@github.com:diazevedo/fast-feet.git
+
+# Go to the repository folder
+$ cd fast-feet
+
+# Install dependencies
+$ yarn install
+
+# It is optional but I use Docker.
+# If you do not have yet you can follow this steps https://docs.docker.com/get-started/
+
+# Create images of each database used
+# Redis
+docker run --name redis -p 6379:6379 -d -t redis:alpine
+
+# Postgres
+docker run --name fastfeet -e POSTGRES_PASSWORD=fastfeet -p 5432:5432 -d postgres
+* In this case, both user and password are fastfeet
+
+# Mongo
+docker run --name mongo -p 27017:27017 -d -t
+
+# Starting databases
+docker start redis mongo postgres
+
+```
+
+I suggest you to have a look at the `.env.example` file and setup some variables.
+
+Now we need to create our database structure into postgres.
+
+```bash
+# Running migrations
+yarn sequelize db:migrate
+
+# Putting data into that, it comes with an administrador user
+yarn sequelize db:seed:all
+
+# Starting the application
+yarn dev
+
+# Email queue
+yarn queue
+```
+
+:bulb: Feel free to comment or to contribute with this project any thoughts on how to improve this is welcome.
