@@ -25,7 +25,7 @@ The api is consumed by frontend and the mobile versions.
 
 ### Features
 
-- Authentication using JWT
+- Authentication
 - Recipients management
 - Couriers management
 - Deliveries management
@@ -35,6 +35,7 @@ The api is consumed by frontend and the mobile versions.
 
 Technologies / Libraries
 
+- [JSON Web Token](https://github.com/auth0/node-jsonwebtoken)
 - [Sucrase](https://github.com/alangpierce/sucrase)
 - [Nodemon](https://nodemon.io/)
 - [PostgreSQL](https://www.postgresql.org/)
