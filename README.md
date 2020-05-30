@@ -14,6 +14,8 @@
 
 ### Description
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/dce77037d8074857bbcdd5680b75552c)](https://app.codacy.com/manual/diazevedo/fast-feet?utm_source=github.com&utm_medium=referral&utm_content=diazevedo/fast-feet&utm_campaign=Badge_Grade_Settings)
+
 This is the backend code of a project developed as final challenge from [Rockeseat Bootcamp](https://rocketseat.com.br/gostack).
 
 FastFeet is an application designed to be used by a shipping company.
