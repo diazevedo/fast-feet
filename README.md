@@ -50,7 +50,7 @@ Technologies / Libraries
 
 ### Running the project
 
-Requeriments
+Requirements
 
 - [Node](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/) or [NPM](https://www.npmjs.com/) — I am using yarn commands over this step-by-step
