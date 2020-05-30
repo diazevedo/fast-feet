@@ -102,4 +102,4 @@ yarn dev
 yarn queue
 ```
 
-:bulb: Feel free to comment or to contribute with this project any thoughts on how to improve this is welcome.
+:bulb: Feel free to comment or to contribute with this project any thoughts on how to improve this are welcome.
