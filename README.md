@@ -14,11 +14,11 @@
 
 ### Description
 
-This is the backend code of a project developed as final challenge from [Rockeseat Bootcamp](https://rocketseat.com.br/gostack).
+This is the backend code of a project developed as the final challenge from [Rockeseat Bootcamp](https://rocketseat.com.br/gostack).
 
 FastFeet is an application designed to be used by a shipping company.
 
-The api is consumed by frontend and the mobile versions.
+The API is consumed by the frontend and the mobile versions.
 
 - [FastFeet web](https://github.com/diazevedo/fast-feet-web)
 - [FastFeet mobile](https://github.com/diazevedo/fast-feet-mobile)
@@ -66,7 +66,7 @@ $ cd fast-feet
 $ yarn install
 
 # It is optional but I use Docker.
-# If you do not have yet you can follow this steps https://docs.docker.com/get-started/
+# If you do not have yet you can follow these steps https://docs.docker.com/get-started/
 
 # Create images of each database used
 # Redis
@@ -84,15 +84,15 @@ docker start redis mongo postgres
 
 ```
 
-I suggest you to have a look at the `.env.example` file and setup some variables.
+I suggest you have a look at the `.env.example` file and set up some variables.
 
-Now we need to create our database structure into postgres.
+Now we need to create our database structure into Postgres.
 
 ```bash
 # Running migrations
 yarn sequelize db:migrate
 
-# Putting data into that, it comes with an administrador user
+# Putting data into that, it comes with an administrator user
 yarn sequelize db:seed:all
 
 # Starting the application
