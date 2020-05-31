@@ -33,7 +33,7 @@ The API is consumed by the frontend and the mobile versions.
 - Files management
 - Email alerts
 
-Technologies / Libraries
+### Technologies / Libraries
 
 - [JSON Web Token](https://github.com/auth0/node-jsonwebtoken)
 - [Sucrase](https://github.com/alangpierce/sucrase)
