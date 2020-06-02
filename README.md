@@ -5,7 +5,7 @@
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/diazevedo/fast-feet">
 
-  <a href="https://www.linkedin.com/in/diazevedo">
+  <a href="https://www.linkedin.com/in/diazevedo" target="_blank" >
     <img alt="Made by Di Azevedo" src="https://img.shields.io/badge/made%20by-DiAzevedo-%2325b0e6">
   </a>
 
